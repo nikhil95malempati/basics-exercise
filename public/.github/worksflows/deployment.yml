@@ -1,0 +1,28 @@
+name: Deploy Project
+on: [push, workflow_dispatch]                 # workflow_dispatch helps to run pipeline manually
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Get code
+              uses: actions/checkout@v3         # gets the code to ubuntu latest machine 
+            - name: Install Node JS
+              uses: actions/setup-node@v3       # Install Node JS with 18 version          
+              with:
+                node-version: 18
+            - name: Install dependencies
+              run: npm ci                        # Installs dependencies just like requirements file in python npm install will work but npm ci is safe
+            - name: lint tests
+              run: npm run lint
+            - name: Run tests
+              run: npm test                      # run unit tests
+            - name: Build project
+              run: npm run build
+            - name: Deploy
+              run: echo "Deploying"
+
+          
+
+    
+
+              
