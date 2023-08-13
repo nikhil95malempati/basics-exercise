@@ -1,0 +1,18 @@
+name: Handle issues
+on: issues
+jobs:
+    output-info:
+        runs-on: ubuntu-latest
+        steps: 
+            - name: Output event details
+              run: |
+                echo "Issue Action: ${{ github.event.action }}"
+                echo "Issue Number: ${{ github.event.issue.number }}"
+                echo "Issue Title: ${{ github.event.issue.title }}"
+                echo "Issue Body: ${{ github.event.issue.body }}"
+                echo "Issue State: ${{ github.event.issue.state }}"
+                echo "Issue Author: ${{ github.event.issue.user.login }}"
+                echo "Repository: ${{ github.repository }}"
+                echo "Workflow Run ID: ${{ github.run_id }}"
+                echo "Workflow Run Number: ${{ github.run_number }}"
+  
